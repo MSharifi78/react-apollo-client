@@ -8,39 +8,41 @@ import {
   Button,
   Message
 } from "semantic-ui-react";
+import Formsy from "formsy-react";
+import CustomFormInput from "../../components/CustomFormInput";
 
 export class Login extends Component {
   render() {
     return (
       <Grid
-        textAlign="center"
         style={{ height: "100%", backgroundColor: "#fafafa" }}
         verticalAlign="middle"
+        centered
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="orange" textAlign="center">
             Login to Your account
           </Header>
-          <Form size="large">
+          <Formsy>
             <Segment stacked>
-              <Form.Input
-                fluid
-                icon="user"
-                iconPosition="left"
-                placeholder="E-mail address"
+              <CustomFormInput
+                placeholder="Email"
+                icon="mail"
+                name="email"
+                validations="isEmail"
+                validationError="This is not an Email"
               />
-              <Form.Input
-                fluid
-                icon="lock"
-                iconPosition="left"
+              <CustomFormInput
                 placeholder="Password"
+                icon="lock"
+                name="password"
                 type="password"
               />
               <Button color="orange" fluid size="large">
                 Login
               </Button>
             </Segment>
-          </Form>
+          </Formsy>
           <Message>
             New to us? <a href="#">Register</a>
           </Message>
