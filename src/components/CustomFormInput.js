@@ -43,6 +43,7 @@ const MyInput = props => {
         name={name}
         value={getValue() || ""}
         error={shouldShowError()}
+        disabled={isFormDisabled()}
         {...rest}
       />
       {shouldShowError() && <Message negative>{getErrorMessage()}</Message>}

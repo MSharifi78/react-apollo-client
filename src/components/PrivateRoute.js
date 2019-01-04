@@ -5,8 +5,8 @@ function PrivateRoute({ component: Component, redirectPath, ...rest }) {
   return (
     <Route
       {...rest}
-      render={props =>
-        false ? (
+      render={props =>{
+      return  ( localStorage.getItem("apolloToken") ? (
           <Component {...props} />
         ) : (
           <Redirect
@@ -15,7 +15,7 @@ function PrivateRoute({ component: Component, redirectPath, ...rest }) {
               state: { from: props.location }
             }}
           />
-        )
+        ))}
       }
     />
   );
